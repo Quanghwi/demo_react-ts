@@ -1,33 +1,36 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import { Routes, Route } from 'react-router-dom'
+import WebLayout from './page/layout/WebLayout'
+import HomePage from './page/HomePage'
+import ProductsPage from './page/ProductsPage'
+import ProductDetail from './page/ProductDetail'
+import AdminLayout from './page/layout/AdminLayout'
+import Dashboard from './page/admin/Dashboard'
+import ProductsManagement from './page/admin/ProductsManagement'
+import UpdateProduct from './page/admin/UpdateProduct'
+import AddProduct from './page/admin/AddProduct'
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Routes>
+        <Route path='/' element={< WebLayout />}>
+          <Route index element={< HomePage />} />
+          <Route path='products'>
+            <Route index element={< ProductsPage />} />
+            <Route path=':id' element={< ProductDetail />} />
+          </Route>
+        </Route>
+        <Route path='/admin' element={< AdminLayout />}>
+          <Route index element={< Dashboard />} />
+          <Route path='addProduct' element={< AddProduct />} />
+          <Route path='products'>
+            <Route index element={< ProductsManagement />} />
+            <Route path=':id/update' element={< UpdateProduct />} />
+          </Route>
+        </Route>
+      </Routes>
     </div>
   )
 }
