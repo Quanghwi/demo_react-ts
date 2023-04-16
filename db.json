@@ -1,68 +1,86 @@
 {
-    "products": [
-        {
-            "id": 1,
-            "name": "Product 1",
-            "price": 100,
-            "cateId": 1
-        },
-        {
-            "id": 2,
-            "name": "Product 2",
-            "price": 200,
-            "cateId": 2
-        },
-        {
-            "id": 3,
-            "name": "Product 3",
-            "price": 300,
-            "cateId": 1
-        },
-        {
-            "id": 4,
-            "name": "Product 4",
-            "price": 200,
-            "cateId": 2
-        },
-        {
-            "id": 5,
-            "name": "Product 5",
-            "price": 200,
-            "cateId": 1
-        }
-    ],
-    "categories": [
-        {
-            "id": 1,
-            "name": "Category 1"
-        },
-        {
-            "id": 2,
-            "name": "Category 2"
-        }
-    ],
-    "users": [
-        {
-            "id": 1,
-            "email": "user1@gmail.com",
-            "password": "123456",
-            "role": 1
-        },
-        {
-            "id": 2,
-            "email": "user2@gmail.com",
-            "password": "654321",
-            "role": 2
-        }
-    ],
-    "roles": [
-        {
-            "id": 1,
-            "name": "admin"
-        },
-        {
-            "id": 2,
-            "name": "user"
-        }
-    ]
+  "products": [
+    {
+      "id": 1,
+      "name": "Product 1",
+      "price": 100,
+      "cateId": 1
+    },
+    {
+      "id": 2,
+      "name": "Product 2",
+      "price": 200,
+      "cateId": 2
+    },
+    {
+      "id": 3,
+      "name": "Product 3",
+      "price": 300,
+      "cateId": 1
+    },
+    {
+      "id": 4,
+      "name": "Product 4",
+      "price": 200,
+      "cateId": 2
+    },
+    {
+      "id": 5,
+      "name": "Product 5",
+      "price": 200,
+      "cateId": 1
+    },
+    {
+      "name": "Quang Huy",
+      "price": "40000",
+      "cateId": 1,
+      "id": 6
+    },
+    {
+      "name": "Dang Quang",
+      "price": "5000",
+      "cateId": 2,
+      "id": 7
+    },
+    {
+      "name": "Dang Quang Huy",
+      "price": "12000",
+      "cateId": 2,
+      "id": 8
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Category 1"
+    },
+    {
+      "id": 2,
+      "name": "Category 2"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "user1@gmail.com",
+      "password": "123456",
+      "role": 1
+    },
+    {
+      "id": 2,
+      "email": "user2@gmail.com",
+      "password": "654321",
+      "role": 2
+    }
+  ],
+  "roles": [
+    {
+      "id": 1,
+      "name": "admin"
+    },
+    {
+      "id": 2,
+      "name": "user"
+    }
+  ]
 }
