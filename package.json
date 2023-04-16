@@ -4,9 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "json-server --watch db.json",
+    "dev": "concurrently \" npm run start\" \" npm run server\""
   },
   "dependencies": {
     "antd": "^5.4.2",
