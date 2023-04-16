@@ -10,10 +10,14 @@ interface DataType {
     cateId: number
 }
 interface IProps {
-    products: IProduct[]
+    products: IProduct[],
+    onRemove: (id: number) => void
 }
 
 const ProductsManagement = (props: IProps) => {
+    const removeProduct = (id: number) => {
+        props.onRemove(id)
+    }
     const columns: ColumnsType<DataType> = [
         {
             title: 'Name',
@@ -38,7 +42,7 @@ const ProductsManagement = (props: IProps) => {
             render: (record) => (
                 <Space size="middle">
                     <Button style={{ backgroundColor: 'blue', color: 'white' }}><Link to={`${record.key}/update`}>Update</Link></Button>
-                    <Button style={{ backgroundColor: 'red', color: 'white' }}>Remove</Button>
+                    <Button style={{ backgroundColor: 'red', color: 'white' }} onClick={() => removeProduct(record.key)}>Remove</Button>
                 </Space>
             ),
         },

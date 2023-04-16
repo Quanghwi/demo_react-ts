@@ -15,7 +15,7 @@ const updateProduct = (product: IProduct) => {
     return instance.put('/products/' + product.id, product)
 }
 const deleteProduct = (id: number) => {
-    return instance.get('/products/' + id)
+    return instance.delete('products/' + id)
 }
 
 export { getAll, getOne, updateProduct, addProduct, deleteProduct }

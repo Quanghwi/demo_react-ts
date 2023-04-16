@@ -10,12 +10,17 @@ import ProductsManagement from './page/admin/ProductsManagement'
 import UpdateProduct from './page/admin/UpdateProduct'
 import AddProduct from './page/admin/AddProduct'
 import { IProduct } from './type/interface'
-import { getAll } from './api/product'
+import { deleteProduct, getAll } from './api/product'
 function App() {
   const [products, setProduct] = useState<IProduct[]>([])
   useEffect(() => {
     getAll().then(({ data }) => setProduct(data))
   }, [])
+  const onHandleRemove = (id: number) => {
+    deleteProduct(id).then(() => {
+      setProduct(products.filter((item: IProduct) => item.id !== id))
+    })
+  }
   return (
     <div className="App">
       <Routes>
@@ -30,7 +35,7 @@ function App() {
           <Route index element={< Dashboard />} />
           <Route path='addProduct' element={< AddProduct />} />
           <Route path='products'>
-            <Route index element={< ProductsManagement products={products} />} />
+            <Route index element={< ProductsManagement products={products} onRemove={onHandleRemove} />} />
             <Route path=':id/update' element={< UpdateProduct />} />
           </Route>
         </Route>
