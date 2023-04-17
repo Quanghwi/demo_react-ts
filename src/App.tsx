@@ -10,7 +10,7 @@ import ProductsManagement from './page/admin/ProductsManagement'
 import UpdateProduct from './page/admin/UpdateProduct'
 import AddProduct from './page/admin/AddProduct'
 import { IProduct } from './type/interface'
-import { addProduct, deleteProduct, getAll } from './api/product'
+import { addProduct, deleteProduct, getAll, updateProduct } from './api/product'
 function App() {
   const [products, setProduct] = useState<IProduct[]>([])
   useEffect(() => {
@@ -23,6 +23,10 @@ function App() {
   }
   const onHandleAdd = (products: IProduct) => {
     addProduct(products).then(() => getAll().then(({ data }) => setProduct(data)))
+  }
+
+  const onHandleUpdate = (product: IProduct) => {
+    updateProduct(product).then(() => getAll().then(({ data }) => setProduct(data)))
   }
   return (
     <div className="App">
@@ -39,7 +43,7 @@ function App() {
           <Route path='addProduct' element={< AddProduct onAdd={onHandleAdd} />} />
           <Route path='products'>
             <Route index element={< ProductsManagement products={products} onRemove={onHandleRemove} />} />
-            <Route path=':id/update' element={< UpdateProduct />} />
+            <Route path=':id/update' element={< UpdateProduct products={products} onUpdate={onHandleUpdate} />} />
           </Route>
         </Route>
       </Routes>
