@@ -1,5 +1,5 @@
 import React from 'react';
-import { Space, Table, Button } from 'antd';
+import { Space, Table, Button, Modal } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { Link } from 'react-router-dom'
 import { IProduct } from '../../type/interface';
@@ -15,10 +15,29 @@ interface IProps {
 }
 
 const ProductsManagement = (props: IProps) => {
-    const removeProduct = (id: number) => {
-        props.onRemove(id)
+    const { confirm } = Modal
+    const confirmRemove = (id: number) => {
+        confirm({
+            title: 'Chắc chắn xóa?',
+            okText: 'Yes',
+            cancelText: 'No',
+            okType: 'danger',
+            onOk() {
+                props.onRemove(id)
+            },
+            onCancel() { }
+        })
     }
+    // const removeProduct = (id: number) => {
+    //     props.onRemove(id)
+    // }
     const columns: ColumnsType<DataType> = [
+        {
+            title: 'STT',
+            dataIndex: 'stt',
+            key: 'stt',
+            render: (text, record, index) => index + 1,
+        },
         {
             title: 'Name',
             dataIndex: 'name',
@@ -42,7 +61,7 @@ const ProductsManagement = (props: IProps) => {
             render: (record) => (
                 <Space size="middle">
                     <Button style={{ backgroundColor: 'blue', color: 'white' }}><Link to={`${record.key}/update`}>Update</Link></Button>
-                    <Button style={{ backgroundColor: 'red', color: 'white' }} onClick={() => removeProduct(record.key)}>Remove</Button>
+                    <Button style={{ backgroundColor: 'red', color: 'white' }} onClick={() => confirmRemove(record.key)}>Remove</Button>
                 </Space>
             ),
         },
@@ -56,7 +75,9 @@ const ProductsManagement = (props: IProps) => {
         }
     })
     return (
-        <div><Table columns={columns} dataSource={data} /></div>
+        <div>
+            <h2>Products Management</h2>
+            <Table columns={columns} dataSource={data} /></div>
     )
 }
 

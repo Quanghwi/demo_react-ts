@@ -29,18 +29,6 @@
       "name": "Product 5",
       "price": 200,
       "cateId": 1
-    },
-    {
-      "name": "Quang Huy",
-      "price": "40000",
-      "cateId": 1,
-      "id": 6
-    },
-    {
-      "name": "Dang Quang",
-      "price": "5000",
-      "cateId": 2,
-      "id": 7
     }
   ],
   "categories": [
